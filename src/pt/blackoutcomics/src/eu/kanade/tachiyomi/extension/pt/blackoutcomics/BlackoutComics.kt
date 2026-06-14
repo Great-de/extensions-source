@@ -47,10 +47,11 @@ class BlackoutComics :
         .addInterceptor(::ageGateInterceptor)
         .build()
 
-    override fun headersBuilder() = super.headersBuilder()
-        .add("DNT", "1")
-        .add("Sec-GPC", "1")
-        .add("Upgrade-Insecure-Requests", "1")
+        override fun headersBuilder(): Headers.Builder = super.headersBuilder()
+        .add("User-Agent", "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36")
+        .add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8")
+        .add("Accept-Language", "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7")
+        .add("Referer", baseUrl)
 
     // ============================== Popular ===============================
     override fun popularMangaRequest(page: Int): Request = GET("$baseUrl/ranking", headers)
